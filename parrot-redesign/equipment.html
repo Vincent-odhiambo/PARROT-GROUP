@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipment Catalog | Parrot Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link active">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions"><a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a></div>
+      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link active">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="estimator.html" class="btn btn-gold">Get Free Quote</a>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-grid"></div><div class="page-hero-glow"></div>
+    <div class="container">
+      <p class="page-eyebrow">Production Inventory</p>
+      <h1 class="page-title">Equipment & <span class="gradient-text">Tech Showcase</span></h1>
+      <p class="page-subtitle">Browse our state-of-the-art production inventory — audio, video, lighting, and staging systems available for your event.</p>
+    </div>
+  </div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="filter-tabs fade-up">
+          <button class="tab-btn active" data-filter="all">All Inventory</button>
+          <button class="tab-btn" data-filter="audio">Pro Audio</button>
+          <button class="tab-btn" data-filter="lighting">Lighting</button>
+          <button class="tab-btn" data-filter="video">Video & LED</button>
+          <button class="tab-btn" data-filter="staging">Staging</button>
+          <button class="tab-btn" data-filter="power">Power</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-bottom:60px;">
+          <div class="card card-lift eq-card fade-up" data-cat="audio" style="overflow:hidden;">
+            <div class="eq-thumb"><i data-lucide="speaker" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Pro Audio</div><h3>L-Acoustics K2 Line Array</h3><p>Premier touring-grade line source system. Crystal-clear coverage for stadiums up to 50,000 people.</p><div class="eq-specs"><span class="eq-spec">Max SPL 160dB</span><span class="eq-spec">32 cabinets</span><span class="eq-spec">Outdoor rated</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="audio" style="overflow:hidden;transition-delay:0.05s;">
+            <div class="eq-thumb"><i data-lucide="music" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Pro Audio</div><h3>d&b audiotechnik J-Series</h3><p>High-performance J-Series line array for corporate forums and indoor concert halls with precise directional control.</p><div class="eq-specs"><span class="eq-spec">J8 + J-SUB</span><span class="eq-spec">Dante network</span><span class="eq-spec">Remote DSP</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="audio" style="overflow:hidden;transition-delay:0.1s;">
+            <div class="eq-thumb"><i data-lucide="headphones" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Pro Audio</div><h3>DiGiCo SD10 Console</h3><p>Industry-leading digital FOH console with 162 input channels, 128-bus architecture, and full show recall.</p><div class="eq-specs"><span class="eq-spec">162 channels</span><span class="eq-spec">MADI+Dante</span><span class="eq-spec">Full backup</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="video" style="overflow:hidden;">
+            <div class="eq-thumb"><i data-lucide="monitor" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Video & LED</div><h3>P2.9 Indoor LED Wall</h3><p>High-refresh 2.9mm pixel pitch tiles for vibrant indoor backdrops. Seamless tiling from 4m² to 200m².</p><div class="eq-specs"><span class="eq-spec">2.9mm pitch</span><span class="eq-spec">3840Hz refresh</span><span class="eq-spec">Modular</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="video" style="overflow:hidden;transition-delay:0.05s;">
+            <div class="eq-thumb"><i data-lucide="tv" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Video & LED</div><h3>P4.8 Outdoor LED Screen</h3><p>Weatherproof IP65 LED tiles for concerts and open-air stadium events in any weather condition.</p><div class="eq-specs"><span class="eq-spec">4.8mm pitch</span><span class="eq-spec">IP65 rated</span><span class="eq-spec">5000 nits</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="video" style="overflow:hidden;transition-delay:0.1s;">
+            <div class="eq-thumb"><i data-lucide="video" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-amber" style="position:absolute;top:12px;right:12px;">LIMITED</span></div>
+            <div class="eq-body"><div class="eq-cat">Video & LED</div><h3>Barco E2 Screen Manager</h3><p>Flagship multi-screen event processor for IMAG, confidence monitors, and simultaneous multi-output 4K switching.</p><div class="eq-specs"><span class="eq-spec">4K outputs</span><span class="eq-spec">Multi-screen</span><span class="eq-spec">IMAG ready</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="lighting" style="overflow:hidden;">
+            <div class="eq-thumb"><i data-lucide="sun" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Lighting</div><h3>Robe BMFL Spot Moving Heads</h3><p>Industry-standard 1700W moving heads with CMY colour mixing, framing shutters, and 1°–8° zoom range.</p><div class="eq-specs"><span class="eq-spec">1700W</span><span class="eq-spec">CMY mixing</span><span class="eq-spec">Framing</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="lighting" style="overflow:hidden;transition-delay:0.05s;">
+            <div class="eq-thumb"><i data-lucide="zap" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Lighting</div><h3>GLP Impression X4 Bar Wash</h3><p>RGBW LED wash bars for stunning colour washes, stage flooding, and pixel-mapped effects on trusses.</p><div class="eq-specs"><span class="eq-spec">RGBW</span><span class="eq-spec">Pixel map</span><span class="eq-spec">50 units</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="lighting" style="overflow:hidden;transition-delay:0.1s;">
+            <div class="eq-thumb"><i data-lucide="sliders" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Lighting</div><h3>MA Lighting grandMA3 Console</h3><p>World's most advanced lighting control platform for complex multi-universe shows with full parametric control.</p><div class="eq-specs"><span class="eq-spec">64 universes</span><span class="eq-spec">Full backup</span><span class="eq-spec">Network mode</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="staging" style="overflow:hidden;">
+            <div class="eq-thumb"><i data-lucide="layers" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Staging</div><h3>Modular Stage Deck System</h3><p>Aluminium deck platforms configurable from 6ft×6ft to 60ft×40ft. Heights adjustable from 0.6m to 2.4m.</p><div class="eq-specs"><span class="eq-spec">500kg/m² load</span><span class="eq-spec">Anti-slip</span><span class="eq-spec">Guardrails</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="staging" style="overflow:hidden;transition-delay:0.05s;">
+            <div class="eq-thumb"><i data-lucide="git-branch" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Staging</div><h3>Prolyte H40V Truss System</h3><p>European ESTA-certified square truss for ground-support towers and overhead rigging grids. 5:1 safety factor.</p><div class="eq-specs"><span class="eq-spec">ESTA certified</span><span class="eq-spec">5:1 SWL ratio</span><span class="eq-spec">Load cells</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="power" style="overflow:hidden;">
+            <div class="eq-thumb"><i data-lucide="battery-charging" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Power Systems</div><h3>80kVA Diesel Generator</h3><p>Perkins-powered primary generator with auto-start, AVR voltage regulation, and noise-attenuating canopy.</p><div class="eq-specs"><span class="eq-spec">80kVA</span><span class="eq-spec">Auto-start</span><span class="eq-spec">Silenced</span></div></div>
+          </div>
+          <div class="card card-lift eq-card fade-up" data-cat="power" style="overflow:hidden;transition-delay:0.05s;">
+            <div class="eq-thumb"><i data-lucide="zap-off" class="eq-thumb-icon" style="width:54px;height:54px;"></i><span class="pill pill-green" style="position:absolute;top:12px;right:12px;">AVAILABLE</span></div>
+            <div class="eq-body"><div class="eq-cat">Power Systems</div><h3>ATS Auto Transfer Switch</h3><p>Instant automatic switchover between primary and backup generators with zero-break power continuity.</p><div class="eq-specs"><span class="eq-spec">Zero-break</span><span class="eq-spec">400A rating</span><span class="eq-spec">Redundant</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-bg-alt">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <p class="section-eyebrow">Quality Standards</p>
+          <h2 class="section-title">Quality <span class="gradient-text">Assurance</span></h2>
+          <div class="gold-divider"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div class="card card-lift fade-up" style="padding:32px;">
+            <div class="icon-box" style="margin-bottom:18px;"><i data-lucide="check-circle-2" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:17px;margin-bottom:10px;">Multi-Point Testing Routine</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">Before dispatching hardware, our crew runs strict diagnostics. Audio arrays are sweep-tested for speaker coil performance, LED tiles are calibrated for colour consistency, and lighting rigs undergo full pan/tilt cycle tests.</p>
+          </div>
+          <div class="card card-lift fade-up" style="padding:32px;transition-delay:0.1s;">
+            <div class="icon-box" style="margin-bottom:18px;"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:17px;margin-bottom:10px;">Redundancy & Backups</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">We employ a "zero-point-of-failure" production philosophy. Critical audio signals run on redundant Dante networks backed by analog lines, and power grids use parallel backup generators with automatic transfer switches.</p>
+          </div>
+        </div>
+      </div>
+    </section></main>
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+        <p>Premium Event Engineering and Immersive Technical Production across East & Central Africa. Affiliated with EMAK & MSK since 2014.</p>
+      </div>
+      <div class="footer-links"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="estimator.html">Cost Calculator</a><a href="designer.html">Stage Designer</a><a href="equipment.html">Equipment</a></div>
+      <div class="footer-links"><h4>Resources</h4><a href="portfolio.html">Case Studies</a><a href="dashboard.html">Client Portal</a><a href="contact.html">Contact Support</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Parrot Group Production House. All rights reserved.</span>
+      <span class="footer-gold">+254 716 406 406 · info@parrotgroupevents.com</span>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

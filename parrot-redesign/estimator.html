@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Production Estimator | Parrot Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link active">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions"><a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a></div>
+      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link active">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="estimator.html" class="btn btn-gold">Get Free Quote</a>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-grid"></div><div class="page-hero-glow"></div>
+    <div class="container">
+      <p class="page-eyebrow">Budget Tool</p>
+      <h1 class="page-title">Production <span class="gradient-text">Calculator</span></h1>
+      <p class="page-subtitle">Dynamically configure your event parameters, choose technical packages, and calculate live production budgets in real time.</p>
+    </div>
+  </div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="estimator-grid fade-up">
+          <div class="controls-panel card-gold-top">
+            <div class="ctrl-section">
+              <div class="ctrl-label">Guest Capacity <span class="ctrl-val" id="guests-val">150 Guests</span></div>
+              <input type="range" id="guests-slider" min="50" max="3000" step="50" value="150" />
+            </div>
+            <div class="ctrl-section">
+              <div class="ctrl-label">Event Duration <span class="ctrl-val" id="duration-val">1 Day</span></div>
+              <input type="range" id="duration-slider" min="1" max="7" step="1" value="1" />
+            </div>
+            <div class="ctrl-section">
+              <div class="form-row-2">
+                <div class="form-group"><label class="form-label">Event Classification</label>
+                  <select class="form-control" id="event-type"><option value="1.0">Corporate Conference</option><option value="1.5">Live Concert / Festival</option><option value="1.2">Exhibition / Expo</option><option value="1.3">Awards Gala / Ceremony</option><option value="1.1">NGO / Government Event</option></select>
+                </div>
+                <div class="form-group"><label class="form-label">Stage Size</label>
+                  <select class="form-control" id="stage-size"><option value="2500">Standard 24ft × 16ft</option><option value="5000">Large Concert 40ft × 24ft</option><option value="4000">Fashion Runway</option><option value="0">No Stage Required</option></select>
+                </div>
+              </div>
+            </div>
+            <div class="ctrl-section">
+              <div class="ctrl-label">Technical Add-on Packages</div>
+              <div class="addon-grid">
+                <div class="addon-card checked" data-price="1200" onclick="toggleAddon(this)"><input type="checkbox" checked /><div class="addon-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="addon-title">Pro Audio Package</div><div class="addon-desc">Line arrays, subs, monitors</div><div class="addon-price">+ KSh 120,000</div></div>
+                <div class="addon-card checked" data-price="2500" onclick="toggleAddon(this)"><input type="checkbox" checked /><div class="addon-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="addon-title">P2.9 LED Video Wall</div><div class="addon-desc">High-refresh visual backdrop</div><div class="addon-price">+ KSh 250,000</div></div>
+                <div class="addon-card" data-price="1800" onclick="toggleAddon(this)"><input type="checkbox" /><div class="addon-check"></div><div class="addon-title">Intelligent Lighting</div><div class="addon-desc">Moving heads, wash, beams</div><div class="addon-price">+ KSh 180,000</div></div>
+                <div class="addon-card" data-price="1500" onclick="toggleAddon(this)"><input type="checkbox" /><div class="addon-check"></div><div class="addon-title">Bespoke Branding</div><div class="addon-desc">Backdrops, registration desks</div><div class="addon-price">+ KSh 150,000</div></div>
+                <div class="addon-card" data-price="2000" onclick="toggleAddon(this)"><input type="checkbox" /><div class="addon-check"></div><div class="addon-title">Generator Package</div><div class="addon-desc">80kVA primary + backup ATS</div><div class="addon-price">+ KSh 200,000</div></div>
+                <div class="addon-card" data-price="900" onclick="toggleAddon(this)"><input type="checkbox" /><div class="addon-check"></div><div class="addon-title">IMAG Camera Relay</div><div class="addon-desc">Live camera feeds to screens</div><div class="addon-price">+ KSh 90,000</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="invoice-panel card-gold-top">
+            <div class="inv-title">Production Proposal</div>
+            <div class="inv-divider"></div>
+            <div id="invoice-lines"></div>
+            <div class="inv-divider"></div>
+            <div class="inv-total"><span>Estimated Total</span><span class="inv-amount" id="grand-total">KSh 0</span></div>
+            <p class="inv-note">Final invoice may vary based on site survey logistics and county permit requirements. VAT exclusive.</p>
+            <a href="contact.html" class="btn btn-gold btn-block" style="margin-top:20px;"><i data-lucide="send" style="width:16px;height:16px;"></i> Book Production Inquiry</a>
+            <a href="equipment.html" class="btn btn-outline btn-block" style="margin-top:10px;">View Equipment Details</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;">
+          <div class="card card-lift fade-up" style="padding:30px;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="users" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">Scaling by Guest Volume</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">As guest count grows, audio projection and structural rigging requirements increase. For groups over 500, we transition from point-source speakers to hanging line source arrays. Large capacities trigger backup generators (150kVA+) and additional technical crew.</p>
+          </div>
+          <div class="card card-lift fade-up" style="padding:30px;transition-delay:0.1s;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="calendar" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">The Multi-Day Advantage</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">Event production has significant upfront logistics — transporting heavy trusses, assembling LED screens, rigging cables. Since mobilization occurs on Day 1, subsequent days are billed at a discounted rate (typically 45% of base daily cost).</p>
+          </div>
+        </div>
+      </div>
+    </section></main>
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+        <p>Premium Event Engineering and Immersive Technical Production across East & Central Africa. Affiliated with EMAK & MSK since 2014.</p>
+      </div>
+      <div class="footer-links"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="estimator.html">Cost Calculator</a><a href="designer.html">Stage Designer</a><a href="equipment.html">Equipment</a></div>
+      <div class="footer-links"><h4>Resources</h4><a href="portfolio.html">Case Studies</a><a href="dashboard.html">Client Portal</a><a href="contact.html">Contact Support</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Parrot Group Production House. All rights reserved.</span>
+      <span class="footer-gold">+254 716 406 406 · info@parrotgroupevents.com</span>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

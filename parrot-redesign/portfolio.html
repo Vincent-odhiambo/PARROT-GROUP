@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Parrot Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link active">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions"><a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a></div>
+      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link active">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="estimator.html" class="btn btn-gold">Get Free Quote</a>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-grid"></div><div class="page-hero-glow"></div>
+    <div class="container">
+      <p class="page-eyebrow">Our Work</p>
+      <h1 class="page-title">Flagship <span class="gradient-text">Projects Portfolio</span></h1>
+      <p class="page-subtitle">A detailed look at custom stage designs, acoustic tuning, branding setups, and activations we have delivered for prominent organisations across East Africa.</p>
+    </div>
+  </div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="filter-tabs fade-up">
+          <button class="tab-btn active" data-portfolio-filter="all">All Productions</button>
+          <button class="tab-btn" data-portfolio-filter="corporate">Corporate Galas</button>
+          <button class="tab-btn" data-portfolio-filter="activation">Exhibitions & Walks</button>
+          <button class="tab-btn" data-portfolio-filter="concert">Concerts & Launches</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;">
+          <div class="card card-lift pf-card fade-up" data-cat="corporate" style="overflow:hidden;cursor:pointer;" onclick="openPortfolioModal(this)" data-title="MSK Awards Gala" data-cat-label="Corporate Gala" data-desc="Elite technical production for the Marketing Society of Kenya annual awards ceremony. Rendered 4K background pixel LED screens, intelligent wash fixtures, and custom stage carpentry for 800 guests at a premium Nairobi ballroom." data-info="Equipment: P2.9 LED Wall (80m²), Robe BMFL Moving Heads ×24, Prolyte Truss Ground Support, DiGiCo SD10 Console, d&b J-Series Line Array." data-loc="Nairobi, Kenya">
+            <div class="pf-thumb"><i data-lucide="award" class="pf-thumb-icon" style="width:64px;height:64px;"></i><div class="pf-thumb-overlay"></div><span class="pill pill-gold" style="position:absolute;top:14px;left:14px;">Corporate Gala</span><span style="position:absolute;top:14px;right:14px;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,0.5);padding:3px 9px;border-radius:6px;">2024</span></div>
+            <div class="pf-body"><h3>MSK Awards Gala</h3><p>Elite production with 4K pixel LED backdrops, intelligent wash fixtures, and custom stage carpentry for 800 guests.</p><div class="pf-specs"><span class="pf-spec">P2.9 LED Wall</span><span class="pf-spec">BMFL Moving Heads</span><span class="pf-spec">800 Guests</span></div><div class="pf-meta"><span><i data-lucide="map-pin" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px;"></i>Nairobi, Kenya</span><span style="color:var(--gold);font-weight:600;font-size:13px;">View Case Study →</span></div></div>
+          </div>
+          <div class="card card-lift pf-card fade-up" data-cat="activation" style="overflow:hidden;cursor:pointer;transition-delay:0.1s;" onclick="openPortfolioModal(this)" data-title="UNHCR Step for Safety Walk" data-cat-label="NGO Activation" data-desc="Massive nationwide logistics coordination for UNHCR Kenya countrywide charity walk. Covered site surveys, multi-mile power grids, outdoor structural fabrications, and distributed sound coverage across Kenya's major cities simultaneously." data-info="Simultaneous multi-city deployment: Nairobi, Mombasa, Kisumu, Nakuru. Equipment fleet: 12 generator units, 30+ speaker clusters, 8 stage platforms." data-loc="Kenya Countrywide">
+            <div class="pf-thumb"><i data-lucide="users" class="pf-thumb-icon" style="width:64px;height:64px;"></i><div class="pf-thumb-overlay"></div><span class="pill pill-gold" style="position:absolute;top:14px;left:14px;">NGO Activation</span><span style="position:absolute;top:14px;right:14px;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,0.5);padding:3px 9px;border-radius:6px;">2023</span></div>
+            <div class="pf-body"><h3>UNHCR "Step for Safety" Walk</h3><p>Countrywide logistics with multi-mile power grids, outdoor fabrication, and distributed sound across Kenya simultaneously.</p><div class="pf-specs"><span class="pf-spec">Multi-city</span><span class="pf-spec">12 Generators</span><span class="pf-spec">Outdoor Grid</span></div><div class="pf-meta"><span><i data-lucide="map-pin" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px;"></i>Kenya Countrywide</span><span style="color:var(--gold);font-weight:600;font-size:13px;">View Case Study →</span></div></div>
+          </div>
+          <div class="card card-lift pf-card fade-up" data-cat="concert" style="overflow:hidden;cursor:pointer;transition-delay:0.2s;" onclick="openPortfolioModal(this)" data-title="Telkom Corporate Launch" data-cat-label="Concert / Launch" data-desc="Cinematic product launch featuring stadium-grade L-Acoustics line arrays, rigging load balancing structures, and laser light show calibration at Kasarani Stadium — one of Kenya's largest indoor venues." data-info="L-Acoustics K2 × 32 cabinets, GLP X4 Bar washes ×48, Laser system 40W, Barco E2 screen management, 80kVA × 3 generator banks." data-loc="Kasarani Stadium, Nairobi">
+            <div class="pf-thumb"><i data-lucide="radio" class="pf-thumb-icon" style="width:64px;height:64px;"></i><div class="pf-thumb-overlay"></div><span class="pill pill-gold" style="position:absolute;top:14px;left:14px;">Concert / Launch</span><span style="position:absolute;top:14px;right:14px;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,0.5);padding:3px 9px;border-radius:6px;">2023</span></div>
+            <div class="pf-body"><h3>Telkom Corporate Launch</h3><p>Stadium-grade L-Acoustics line arrays, rigging load balancing, and synchronized laser show at Kasarani Stadium.</p><div class="pf-specs"><span class="pf-spec">L-Acoustics K2</span><span class="pf-spec">Laser Show</span><span class="pf-spec">Stadium Scale</span></div><div class="pf-meta"><span><i data-lucide="map-pin" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px;"></i>Kasarani Stadium</span><span style="color:var(--gold);font-weight:600;font-size:13px;">View Case Study →</span></div></div>
+          </div>
+          <div class="card card-lift pf-card fade-up" data-cat="corporate" style="overflow:hidden;cursor:pointer;" onclick="openPortfolioModal(this)" data-title="Safaricom Annual Conference" data-cat-label="Corporate Conference" data-desc="Full technical production for Safaricom's national annual staff conference. Corporate stage with 360° LED curved backdrop, 6 confidence monitors, broadcast camera relay, and professional translation booths." data-info="Curved P2.9 LED backdrop 120m², 6 IMAG relay screens, 4 camera positions, Bosch conference system, DiGiCo SD12 console." data-loc="KICC, Nairobi">
+            <div class="pf-thumb"><i data-lucide="briefcase" class="pf-thumb-icon" style="width:64px;height:64px;"></i><div class="pf-thumb-overlay"></div><span class="pill pill-gold" style="position:absolute;top:14px;left:14px;">Corporate</span><span style="position:absolute;top:14px;right:14px;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,0.5);padding:3px 9px;border-radius:6px;">2024</span></div>
+            <div class="pf-body"><h3>Safaricom Annual Conference</h3><p>Corporate stage with 360° LED curved backdrop, 6 confidence monitors, broadcast camera relay, and translation booths.</p><div class="pf-specs"><span class="pf-spec">Curved LED 120m²</span><span class="pf-spec">IMAG Relay</span><span class="pf-spec">360° Coverage</span></div><div class="pf-meta"><span><i data-lucide="map-pin" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px;"></i>KICC, Nairobi</span><span style="color:var(--gold);font-weight:600;font-size:13px;">View Case Study →</span></div></div>
+          </div>
+          <div class="card card-lift pf-card fade-up" data-cat="activation" style="overflow:hidden;cursor:pointer;transition-delay:0.1s;" onclick="openPortfolioModal(this)" data-title="Equity Bank Roadshow" data-cat-label="Brand Activation" data-desc="18-county financial roadshow activation for Equity Bank covering rural and urban markets. Each stop featured a modular branded stage, PA system, brand activation tent, and registration desk infrastructure." data-info="18-county tour over 6 weeks. Modular stage (24ft×16ft) ×3 units rotating deployment. Self-powered speaker clusters, branded tents 10m×20m." data-loc="Multi-County, Kenya">
+            <div class="pf-thumb"><i data-lucide="map" class="pf-thumb-icon" style="width:64px;height:64px;"></i><div class="pf-thumb-overlay"></div><span class="pill pill-gold" style="position:absolute;top:14px;left:14px;">Activation</span><span style="position:absolute;top:14px;right:14px;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,0.5);padding:3px 9px;border-radius:6px;">2023</span></div>
+            <div class="pf-body"><h3>Equity Bank Roadshow</h3><p>18-county financial roadshow with modular branded stages, PA systems, activation tents, and registration desks.</p><div class="pf-specs"><span class="pf-spec">18 Counties</span><span class="pf-spec">6-Week Tour</span><span class="pf-spec">Modular Stages</span></div><div class="pf-meta"><span><i data-lucide="map-pin" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px;"></i>Multi-County, Kenya</span><span style="color:var(--gold);font-weight:600;font-size:13px;">View Case Study →</span></div></div>
+          </div>
+          <div class="card card-lift pf-card fade-up" data-cat="concert" style="overflow:hidden;cursor:pointer;transition-delay:0.2s;" onclick="openPortfolioModal(this)" data-title="Nairobi Jazz & Arts Festival" data-cat-label="Outdoor Festival" data-desc="Outdoor festival production for a 3-day jazz and arts event hosting 12,000 daily attendees. Features included dual main stages, artist monitor systems, FOH mix position, and atmospheric ambient lighting rigs." data-info="Dual stage configuration: Main Stage (40ft×24ft) + Secondary (24ft×16ft). L-Acoustics K2 main + KARA delays. Permits: NEMA environmental, NCA structural approval." data-loc="Uhuru Gardens, Nairobi">
+            <div class="pf-thumb"><i data-lucide="music" class="pf-thumb-icon" style="width:64px;height:64px;"></i><div class="pf-thumb-overlay"></div><span class="pill pill-gold" style="position:absolute;top:14px;left:14px;">Festival</span><span style="position:absolute;top:14px;right:14px;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,0.5);padding:3px 9px;border-radius:6px;">2022</span></div>
+            <div class="pf-body"><h3>Nairobi Jazz & Arts Festival</h3><p>3-day outdoor festival for 12,000 daily attendees with dual stages, FOH systems, and atmospheric lighting rigs.</p><div class="pf-specs"><span class="pf-spec">12,000/day</span><span class="pf-spec">Dual Stages</span><span class="pf-spec">3 Days</span></div><div class="pf-meta"><span><i data-lucide="map-pin" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px;"></i>Uhuru Gardens, Nairobi</span><span style="color:var(--gold);font-weight:600;font-size:13px;">View Case Study →</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-box">
+        <button class="modal-close" id="modal-close"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <span class="pill pill-gold" id="modal-tag" style="margin-bottom:14px;display:inline-flex;"></span>
+        <h2 style="font-size:24px;font-weight:800;color:var(--ivory);margin-bottom:14px;" id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-info" id="modal-info"></div>
+        <div class="modal-footer">
+          <span><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:-1px;margin-right:4px;"></i><span id="modal-loc"></span></span>
+          <a href="contact.html" class="btn btn-gold btn-sm">Inquire About This Project</a>
+        </div>
+      </div>
+    </div></main>
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+        <p>Premium Event Engineering and Immersive Technical Production across East & Central Africa. Affiliated with EMAK & MSK since 2014.</p>
+      </div>
+      <div class="footer-links"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="estimator.html">Cost Calculator</a><a href="designer.html">Stage Designer</a><a href="equipment.html">Equipment</a></div>
+      <div class="footer-links"><h4>Resources</h4><a href="portfolio.html">Case Studies</a><a href="dashboard.html">Client Portal</a><a href="contact.html">Contact Support</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Parrot Group Production House. All rights reserved.</span>
+      <span class="footer-gold">+254 716 406 406 · info@parrotgroupevents.com</span>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

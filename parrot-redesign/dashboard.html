@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Hub | Parrot Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link active">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions"><a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a></div>
+      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link active">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="estimator.html" class="btn btn-gold">Get Free Quote</a>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-grid"></div><div class="page-hero-glow"></div>
+    <div class="container">
+      <p class="page-eyebrow">Client Portal</p>
+      <h1 class="page-title">Production <span class="gradient-text">Client Hub</span></h1>
+      <p class="page-subtitle">Real-time project dashboard — track setup milestones, dispatch logs, and crew readiness for your event.</p>
+    </div>
+  </div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="dashboard-layout fade-up">
+          <div class="db-sidebar">
+            <div class="client-info">
+              <div class="client-avatar">UN</div>
+              <div class="client-name">UNHCR Kenya</div>
+              <div class="client-project">Step for Safety Walk</div>
+            </div>
+            <div class="sidebar-item active"><i data-lucide="layout-dashboard" style="width:16px;height:16px;"></i> Overview</div>
+            <div class="sidebar-item"><i data-lucide="calendar" style="width:16px;height:16px;"></i> Booking Timeline</div>
+            <div class="sidebar-item"><i data-lucide="check-square" style="width:16px;height:16px;"></i> Tasks Checklist</div>
+            <div class="sidebar-item"><i data-lucide="file-text" style="width:16px;height:16px;"></i> Event Documents</div>
+            <div class="sidebar-item"><i data-lucide="users" style="width:16px;height:16px;"></i> Assigned Crew</div>
+          </div>
+          <div class="db-content">
+            <div class="stat-cards-row">
+              <div class="stat-card">
+                <div class="stat-card-label">Setup Completion</div>
+                <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+                <div class="stat-card-value" id="progress-val">75%</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-label">Project Status</div>
+                <div style="margin-top:8px;"><span class="badge-live">Technical Dry-Run</span></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card-label">Assigned Crew</div>
+                <div class="stat-card-value">12</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Technicians on-site</div>
+              </div>
+            </div>
+            <div class="db-main-grid">
+              <div class="db-card">
+                <div class="db-card-title"><i data-lucide="check-circle" style="width:16px;height:16px;color:var(--gold);"></i> Setup Milestones</div>
+                <div class="checklist">
+                  <div class="check-item done" data-weight="20"><div class="check-box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="check-label">Site Survey & Audio Grid Design</span><span class="check-weight">20%</span></div>
+                  <div class="check-item done" data-weight="25"><div class="check-box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="check-label">Truss Assembly & Rigging Setup</span><span class="check-weight">25%</span></div>
+                  <div class="check-item done" data-weight="30"><div class="check-box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="check-label">Staging Fabrication & Backdrop Mounting</span><span class="check-weight">30%</span></div>
+                  <div class="check-item" data-weight="15"><div class="check-box"></div><span class="check-label">LED Wall Calibration & Cable Layout</span><span class="check-weight">15%</span></div>
+                  <div class="check-item" data-weight="10"><div class="check-box"></div><span class="check-label">Sound Check & Audio Tuning</span><span class="check-weight">10%</span></div>
+                </div>
+              </div>
+              <div class="db-card">
+                <div class="db-card-title"><i data-lucide="terminal" style="width:16px;height:16px;color:var(--gold);"></i> Live Dispatch Logs</div>
+                <div class="log-console" id="log-console">
+                  <div class="log-entry"><span class="log-time">[08:42:15]</span><span class="log-text">Rigging safety certified by structural inspector.</span></div>
+                  <div class="log-entry"><span class="log-time">[09:12:00]</span><span class="log-text accent">Power generator links configured (80kVA primary online).</span></div>
+                  <div class="log-entry"><span class="log-time">[09:55:40]</span><span class="log-text">Stage sub-structures finalized. Carpet installation in progress.</span></div>
+                  <div class="log-entry"><span class="log-time">[10:30:00]</span><span class="log-text">Truss grid assembled. Load cells reading nominal.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;">
+          <div class="card card-lift fade-up" style="padding:30px;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="info" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">Dashboard Synchronicity</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">This hub connects event coordinators directly with onsite technicians. Whenever structural engineers certify rigging points or audio crews finish a speaker sweep, check-ins are logged here in real time. Event planners track milestones remotely.</p>
+          </div>
+          <div class="card card-lift fade-up" style="padding:30px;transition-delay:0.1s;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="users-2" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">Technical Crew Roles</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">Every stage build is assigned a Head Rigging Specialist, Lead Audio Engineer, and Visual Wall Tech — all reporting to our Technical Production Manager. Their live updates compile into the console stream to keep production timetables tight.</p>
+          </div>
+        </div>
+      </div>
+    </section></main>
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+        <p>Premium Event Engineering and Immersive Technical Production across East & Central Africa. Affiliated with EMAK & MSK since 2014.</p>
+      </div>
+      <div class="footer-links"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="estimator.html">Cost Calculator</a><a href="designer.html">Stage Designer</a><a href="equipment.html">Equipment</a></div>
+      <div class="footer-links"><h4>Resources</h4><a href="portfolio.html">Case Studies</a><a href="dashboard.html">Client Portal</a><a href="contact.html">Contact Support</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Parrot Group Production House. All rights reserved.</span>
+      <span class="footer-gold">+254 716 406 406 · info@parrotgroupevents.com</span>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

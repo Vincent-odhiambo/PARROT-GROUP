@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stage Designer | Parrot Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link active">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions"><a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a></div>
+      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link active">Designer</a><a href="equipment.html" class="nav-link">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="estimator.html" class="btn btn-gold">Get Free Quote</a>
+  </div>
+  <div class="page-hero">
+    <div class="page-hero-grid"></div><div class="page-hero-glow"></div>
+    <div class="container">
+      <p class="page-eyebrow">Interactive Tool</p>
+      <h1 class="page-title">Interactive <span class="gradient-text">Stage Designer</span></h1>
+      <p class="page-subtitle">Choose layout modes, adjust colour schemes, and preview setup styles in real time.</p>
+    </div>
+  </div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="designer-grid fade-up">
+          <div class="designer-controls">
+            <h3><i data-lucide="sliders" style="width:16px;height:16px;color:var(--gold);"></i> Style Controls</h3>
+            <div style="margin-bottom:24px;">
+              <label class="form-label">Venue Style</label>
+              <div class="style-toggle-group">
+                <button class="style-toggle active" data-style-preset="concert">Concert Arena</button>
+                <button class="style-toggle" data-style-preset="corporate">Corporate Forum</button>
+                <button class="style-toggle" data-style-preset="runway">Runway Gala</button>
+              </div>
+            </div>
+            <div style="margin-bottom:24px;">
+              <label class="form-label">Lighting Theme</label>
+              <div class="color-palette">
+                <div class="color-dot active" data-color-theme="neon" style="background:linear-gradient(135deg,#06b6d4,#8b5cf6);" title="Neon Waves"></div>
+                <div class="color-dot" data-color-theme="amber" style="background:linear-gradient(135deg,#f59e0b,#ef4444);" title="Warm Glow"></div>
+                <div class="color-dot" data-color-theme="forest" style="background:linear-gradient(135deg,#10b981,#06b6d4);" title="Emerald Digital"></div>
+              </div>
+            </div>
+            <div style="margin-bottom:24px;">
+              <label class="form-label">Screen Backdrop</label>
+              <select id="backdrop-select" class="form-control">
+                <option value="visuals">Animated Abstract Waves</option>
+                <option value="brand">Corporate Branding</option>
+                <option value="none">Blank Stage (Dark Matte)</option>
+              </select>
+            </div>
+            <button id="trigger-smoke" class="btn btn-outline" style="width:100%;justify-content:center;">
+              <i data-lucide="wind" style="width:16px;height:16px;"></i> Trigger Fog Machine
+            </button>
+          </div>
+          <div class="visualizer-wrapper">
+            <div id="stage-svg-container" style="width:100%;"></div>
+            <div class="viz-label"><i data-lucide="eye" style="width:12px;height:12px;vertical-align:-1px;margin-right:4px;"></i> 3D CAD Live Preview</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;">
+          <div class="card card-lift fade-up" style="padding:30px;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="shield-alert" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">Rigging Load Safety</h3>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">All trusses and ground-support towers follow European ESTA structural code standards. We maintain a strict 5:1 safety factor for all suspended hardware, monitoring exact point weights in real-time with digital load cells.</p>
+          </div>
+          <div class="card card-lift fade-up" style="padding:30px;transition-delay:0.1s;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="music" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">Acoustic Coverage</h3>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">We map sound distribution using 3D modeling tools (e.g. L-Acoustics Soundvision) to project linear arrays, ensuring even decibel distribution from front VIP seats to back rows without echoes.</p>
+          </div>
+          <div class="card card-lift fade-up" style="padding:30px;transition-delay:0.2s;">
+            <div class="icon-box" style="margin-bottom:16px;"><i data-lucide="sun" style="width:20px;height:20px;"></i></div>
+            <h3 style="font-size:16px;margin-bottom:10px;">Intelligent Colour Mapping</h3>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">Colour psychology sets the event mood. Corporate conferences use warm neutral spotlights (3200K) for camera feeds, while concerts mix vibrant saturated neon washes (cyan, magenta, green) for atmosphere.</p>
+          </div>
+        </div>
+      </div>
+    </section></main>
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon"><svg width="38" height="38" viewBox="0 0 38 38"><rect width="38" height="38" rx="8" fill="#1a1a1a"/><text x="19" y="26" text-anchor="middle" font-size="18" font-weight="900" font-family="Outfit,sans-serif" fill="#C9A84C">P</text></svg></div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
+        <p>Premium Event Engineering and Immersive Technical Production across East & Central Africa. Affiliated with EMAK & MSK since 2014.</p>
+      </div>
+      <div class="footer-links"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="estimator.html">Cost Calculator</a><a href="designer.html">Stage Designer</a><a href="equipment.html">Equipment</a></div>
+      <div class="footer-links"><h4>Resources</h4><a href="portfolio.html">Case Studies</a><a href="dashboard.html">Client Portal</a><a href="contact.html">Contact Support</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Parrot Group Production House. All rights reserved.</span>
+      <span class="footer-gold">+254 716 406 406 · info@parrotgroupevents.com</span>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
