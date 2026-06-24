@@ -15,18 +15,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // ---- Mobile nav toggle ----
-  const hamburger = document.getElementById('nav-hamburger');
-  const mobileNav = document.getElementById('mobile-nav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-    });
-    // Close when a link is clicked
-    mobileNav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => mobileNav.classList.remove('open'));
-    });
+// ---- Slide-up menu card ----
+const menuBtn    = document.getElementById('menuBtn');
+const navOverlay = document.getElementById('navOverlay');
+
+if (menuBtn && navOverlay) {
+  const bgImgs = navOverlay.querySelectorAll('.bg-img');
+  const bgDef  = document.getElementById('bgDefault');
+  const cLinks = navOverlay.querySelectorAll('.c-link');
+
+  function openMenu() {
+    menuBtn.classList.add('is-open');
+    navOverlay.classList.add('is-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   }
+  function closeMenu() {
+    menuBtn.classList.remove('is-open');
+    navOverlay.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    bgImgs.forEach(i => i.classList.remove('active'));
+    if (bgDef) bgDef.classList.remove('hidden');
+  }
+
+  menuBtn.addEventListener('click', () => {
+    navOverlay.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  cLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      bgImgs.forEach(i => i.classList.toggle('active', i.dataset.key === link.dataset.key));
+      if (bgDef) bgDef.classList.add('hidden');
+    });
+    link.addEventListener('mouseleave', () => {
+      bgImgs.forEach(i => i.classList.remove('active'));
+      if (bgDef) bgDef.classList.remove('hidden');
+    });
+  });
+}
 
   // ---- Scroll fade-in observer ----
   const observer = new IntersectionObserver((entries) => {

@@ -9,30 +9,58 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="main-header">
     <div class="nav-container">
-      <a href="index.html" class="logo"><div class="logo-icon">
-        <img src="logo.JFIF" alt="Parrot Group" />
-      </div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link active">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-      <div class="nav-actions"><a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a></div>
-      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <img src="logo1.png" alt="Parrot Group" />
+        </div>
+        <span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span>
+      </a>
+      
+      <div class="nav-actions" style="margin-left:auto;">
+          <a href="estimator.html" class="btn btn-gold btn-sm">Get Free Quote</a>
+        </div>
+        <button class="menu-pill" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <div class="pill-lines"><span></span><span></span><span></span></div>
+          MENU
+        </button>
     </div>
   </header>
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="estimator.html" class="nav-link">Estimator</a><a href="designer.html" class="nav-link">Designer</a><a href="equipment.html" class="nav-link active">Equipment</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="dashboard.html" class="nav-link">Client Hub</a><a href="contact.html" class="nav-link">Contact</a>
-    <a href="estimator.html" class="btn btn-gold">Get Free Quote</a>
+
+  <!--  MENU OVERLAY -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="bg-default" id="bgDefault"></div>
+  <img class="bg-img" data-key="home"      src="assets/preview-home.jpg"      alt=""/>
+  <img class="bg-img" data-key="about"     src="assets/preview-about.jpg"     alt=""/>
+  <img class="bg-img" data-key="portfolio" src="assets/preview-portfolio.jpg" alt=""/>
+  <img class="bg-img" data-key="estimator" src="assets/preview-estimator.jpg" alt=""/>
+  <img class="bg-img" data-key="equipment" src="assets/preview-equipment.jpg" alt=""/>
+  <img class="bg-img" data-key="designer"  src="assets/preview-designer.jpg"  alt=""/>
+  <img class="bg-img" data-key="dashboard" src="assets/preview-dashboard.jpg" alt=""/>
+  <img class="bg-img" data-key="contact"   src="assets/preview-contact.jpg"   alt=""/>
+  <div class="bg-scrim"></div>
+  <div class="overlay-links">
+    <a class="c-link gold" href="index.html"     data-key="home">     <span class="c-num">01</span><span class="c-label">Home</span>       <span class="c-bar"></span></a>
+    <a class="c-link"      href="about.html"     data-key="about">    <span class="c-num">02</span><span class="c-label">About</span>      <span class="c-bar"></span></a>
+    <a class="c-link"      href="portfolio.html" data-key="portfolio"><span class="c-num">03</span><span class="c-label">Our Work</span>   <span class="c-bar"></span></a>
+    <a class="c-link"      href="estimator.html" data-key="estimator"><span class="c-num">04</span><span class="c-label">Estimator</span>  <span class="c-bar"></span></a>
+    <a class="c-link"      href="equipment.html" data-key="equipment"><span class="c-num">05</span><span class="c-label">Equipment</span>  <span class="c-bar"></span></a>
+    <a class="c-link"      href="designer.html"  data-key="designer"> <span class="c-num">06</span><span class="c-label">Designer</span>   <span class="c-arr"></span></a>
+    <a class="c-link"      href="dashboard.html" data-key="dashboard"><span class="c-num">07</span><span class="c-label">Client Hub</span> <span class="c-bar"></span></a>
+    <a class="c-link"      href="contact.html"   data-key="contact">  <span class="c-num">08</span><span class="c-label">Contact</span>    <span class="c-bar"></span></a>
   </div>
-  <div class="page-hero">
-    <div class="page-hero-grid"></div><div class="page-hero-glow"></div>
-    <div class="container">
-      <p class="page-eyebrow">Production Inventory</p>
-      <h1 class="page-title">Equipment & <span class="gradient-text">Tech Showcase</span></h1>
-      <p class="page-subtitle">Browse our state-of-the-art production inventory — audio, video, lighting, and staging systems available for your event.</p>
-    </div>
+  <div class="overlay-socials">
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Facebook</a>
+    <a href="#">X</a>
   </div>
+</div>
+
   <main>
     <section class="section">
       <div class="container">
@@ -125,7 +153,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo"><div class="logo-icon">
-          <img src="logo.JFIF" alt="Parrot Group" />
+          <img src="logo1.png" alt="Parrot Group" />
         </div><span class="logo-text"><span class="gold">PARROT</span> <span class="white">GROUP</span></span></a>
         <p>Premium Event Engineering and Immersive Technical Production across East & Central Africa. Affiliated with EMAK & MSK since 2014.</p>
       </div>
