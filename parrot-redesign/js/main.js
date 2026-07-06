@@ -15,48 +15,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-// ---- Slide-up menu card ----
-const menuBtn    = document.getElementById('menuBtn');
-const navOverlay = document.getElementById('navOverlay');
+  // ---- Fullscreen menu overlay ----
+  const menuBtn    = document.getElementById('menuBtn');
+  const navOverlay = document.getElementById('navOverlay');
 
-if (menuBtn && navOverlay) {
-  const bgImgs = navOverlay.querySelectorAll('.bg-img');
-  const bgDef  = document.getElementById('bgDefault');
-  const cLinks = navOverlay.querySelectorAll('.c-link');
+  if (menuBtn && navOverlay) {
+    const bgImgs      = navOverlay.querySelectorAll('.bg-img');
+    const bgDef       = document.getElementById('bgDefault');
+    const cLinks      = navOverlay.querySelectorAll('.c-link');
+    const placeholder = document.getElementById('overlayPlaceholder');
 
-  function openMenu() {
-    menuBtn.classList.add('is-open');
-    navOverlay.classList.add('is-open');
-    menuBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMenu() {
-    menuBtn.classList.remove('is-open');
-    navOverlay.classList.remove('is-open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    bgImgs.forEach(i => i.classList.remove('active'));
-    if (bgDef) bgDef.classList.remove('hidden');
-  }
-
-  menuBtn.addEventListener('click', () => {
-    navOverlay.classList.contains('is-open') ? closeMenu() : openMenu();
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  cLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      bgImgs.forEach(i => i.classList.toggle('active', i.dataset.key === link.dataset.key));
-      if (bgDef) bgDef.classList.add('hidden');
-    });
-    link.addEventListener('mouseleave', () => {
+    function openMenu() {
+      menuBtn.classList.add('is-open');
+      navOverlay.classList.add('is-open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      if (placeholder) placeholder.classList.remove('hidden');
+    }
+    function closeMenu() {
+      menuBtn.classList.remove('is-open');
+      navOverlay.classList.remove('is-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
       bgImgs.forEach(i => i.classList.remove('active'));
       if (bgDef) bgDef.classList.remove('hidden');
+      if (placeholder) placeholder.classList.remove('hidden');
+    }
+
+    menuBtn.addEventListener('click', () => {
+      navOverlay.classList.contains('is-open') ? closeMenu() : openMenu();
     });
-  });
-}
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    cLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        bgImgs.forEach(i => i.classList.toggle('active', i.dataset.key === link.dataset.key));
+        if (bgDef) bgDef.classList.add('hidden');
+        if (placeholder) placeholder.classList.add('hidden');
+      });
+      link.addEventListener('mouseleave', () => {
+        bgImgs.forEach(i => i.classList.remove('active'));
+        if (bgDef) bgDef.classList.remove('hidden');
+        if (placeholder) placeholder.classList.remove('hidden');
+      });
+    });
+  }
 
   // ---- Scroll fade-in observer ----
   const observer = new IntersectionObserver((entries) => {
@@ -161,7 +166,6 @@ if (menuBtn && navOverlay) {
     const mult     = +(eventType?.value || 1.0);
     const stageCost= +(stageSize?.value || 2500) * 100;
 
-    // Base: KSh 8,000 per guest + scaling
     let base = guests * 80;
     let total = base;
     for (let d = 1; d < days; d++) total += base * 0.45;
@@ -203,7 +207,6 @@ if (menuBtn && navOverlay) {
   if (stageSize)  stageSize.addEventListener('change',  calcEstimate);
   if (grandTotal) calcEstimate();
 
-  // Addon toggle
   window.toggleAddon = function(card) {
     card.classList.toggle('checked');
     calcEstimate();
@@ -226,17 +229,14 @@ if (menuBtn && navOverlay) {
     item.addEventListener('click', () => {
       item.classList.toggle('done');
       updateDashProgress();
-      // Add log entry when checked
       if (item.classList.contains('done')) {
         appendLog(`✓ ${item.querySelector('.check-label')?.textContent} — marked complete.`, true);
       }
     });
   });
 
-  // Animate progress bar on load
   if (progressBar) setTimeout(() => { progressBar.style.width = '75%'; }, 500);
 
-  // Dashboard sidebar nav
   document.querySelectorAll('.sidebar-item').forEach(item => {
     item.addEventListener('click', () => {
       document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
@@ -244,7 +244,6 @@ if (menuBtn && navOverlay) {
     });
   });
 
-  // Live log ticker
   const logConsole = document.getElementById('log-console');
   const logMessages = [
     'Backdrop tension check complete — nominal.',
@@ -325,16 +324,11 @@ if (menuBtn && navOverlay) {
         </radialGradient>
         <filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
       </defs>
-
-      <!-- BG -->
       <rect width="800" height="480" fill="${c.bg}"/>
-      <!-- Grid -->
       <g opacity="0.05" stroke="${c.main}" stroke-width="0.5">
         ${Array.from({length:13},(_,i)=>`<line x1="${i*66}" y1="0" x2="${i*66}" y2="480"/>`).join('')}
         ${Array.from({length:8}, (_,i)=>`<line x1="0" y1="${i*68}" x2="800" y2="${i*68}"/>`).join('')}
       </g>
-
-      <!-- Audience -->
       ${Array.from({length:7}, (_,row) =>
         Array.from({length:20}, (_,col) => {
           const x = 40 + col * 37;
@@ -343,39 +337,22 @@ if (menuBtn && navOverlay) {
           return `<ellipse cx="${x}" cy="${y}" rx="5" ry="7" fill="${c.main}" opacity="${opacity.toFixed(2)}"/>`;
         }).join('')
       ).join('')}
-
-      <!-- Truss -->
       <rect x="${cx - sw / 2 - 20}" y="${cy - sh - 70}" width="${sw + 40}" height="10" rx="4" fill="${c.main}" opacity="0.4"/>
-      <!-- Truss verticals -->
       <line x1="${cx - sw / 2 - 15}" y1="${cy - sh - 60}" x2="${cx - sw / 2 - 15}" y2="${cy - sh}" stroke="${c.main}" stroke-width="3" opacity="0.3"/>
       <line x1="${cx + sw / 2 + 15}" y1="${cy - sh - 60}" x2="${cx + sw / 2 + 15}" y2="${cy - sh}" stroke="${c.main}" stroke-width="3" opacity="0.3"/>
-
-      <!-- Spot lights (moving heads) -->
       ${[-sw/2+30, -sw/6, sw/6, sw/2-30].map(offset => `
         <line x1="${cx + offset}" y1="${cy - sh - 65}" x2="${cx + offset * 0.4}" y2="${cy - sh + 20}"
               stroke="${c.main}" stroke-width="1.5" opacity="0.25"/>
         <ellipse cx="${cx + offset * 0.4}" cy="${cy - sh + 20}" rx="20" ry="8" fill="${c.main}" opacity="0.12"/>
         <circle cx="${cx + offset}" cy="${cy - sh - 64}" r="5" fill="${c.second}" opacity="0.8"/>
       `).join('')}
-
-      <!-- Screen backdrop -->
       ${backdropContent}
-
-      <!-- Stage platform -->
       <rect x="${cx - sw / 2}" y="${cy - sh}" width="${sw}" height="${sh}" rx="6" fill="url(#stageGrad)" stroke="${c.main}" stroke-width="1.5" stroke-opacity="0.5"/>
-
-      <!-- Stage steps -->
       <rect x="${cx - sw / 4}" y="${cy}" width="${sw / 2}" height="12" rx="3" fill="${c.main}" opacity="0.15"/>
       <rect x="${cx - sw / 3}" y="${cy + 12}" width="${sw * 0.66}" height="10" rx="3" fill="${c.main}" opacity="0.10"/>
-
-      <!-- Speaker stacks -->
       <rect x="${cx - sw / 2 - 30}" y="${cy - sh + 10}" width="18" height="${sh - 10}" rx="4" fill="${c.second}" opacity="0.5"/>
       <rect x="${cx + sw / 2 + 12}" y="${cy - sh + 10}" width="18" height="${sh - 10}" rx="4" fill="${c.second}" opacity="0.5"/>
-
-      <!-- Fog -->
       ${fogEffect}
-
-      <!-- Label -->
       <text x="${cx}" y="460" text-anchor="middle" font-family="Outfit,sans-serif" font-size="11" fill="${c.main}" opacity="0.5" letter-spacing="2">${p.label.toUpperCase()} — PARROT GROUP STAGE DESIGN</text>
     </svg>`;
   }
