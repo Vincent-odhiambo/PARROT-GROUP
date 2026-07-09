@@ -78,7 +78,8 @@
 
     <!-- HERO -->
     <section class="hero-section">
-      <div class="hero-bg-grid"></div>
+      <div class="hero-particle-canvas" id="hero-particle-canvas" data-offset-x="0"></div>
+      <div class="hero-particle-scrim"></div>
       <div class="hero-bg-glow"></div>
       <div class="container hero-grid">
 
@@ -114,48 +115,6 @@
             <div>
               <span class="hero-stat-num">12yr</span>
               <span class="hero-stat-lbl">In Operation</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-visual-panel">
-          <div class="status-card card-gold-top">
-            <div class="card-dots-row">
-              <div class="card-dots">
-                <span class="dot dot-r"></span>
-                <span class="dot dot-y"></span>
-                <span class="dot dot-g"></span>
-              </div>
-              <span class="card-lbl">
-                <i data-lucide="activity" style="width:12px;height:12px;color:var(--gold);vertical-align:-1px;margin-right:4px;"></i>
-                Live Production Status
-              </span>
-            </div>
-            <div class="status-row"><span class="lbl">Line Array Audio</span><span class="badge-live">ONLINE</span></div>
-            <div class="status-row"><span class="lbl">LED Pixel Wall (P2.9)</span><span class="badge-live">ONLINE</span></div>
-            <div class="status-row"><span class="lbl">Structural Rigging</span><span class="badge-live">ONLINE</span></div>
-            <div class="status-row"><span class="lbl">Intelligent Lighting Grid</span><span class="badge-live">ONLINE</span></div>
-            <div class="status-row"><span class="lbl">80kVA Generator Banks</span><span class="badge-live">ONLINE</span></div>
-            <div class="wave-bars-wrap">
-              <div class="wave-bars" id="wave-bars">
-                <div class="wave-bar" style="height:18px;animation-delay:0s"></div>
-                <div class="wave-bar" style="height:34px;animation-delay:0.1s"></div>
-                <div class="wave-bar" style="height:26px;animation-delay:0.2s"></div>
-                <div class="wave-bar" style="height:46px;animation-delay:0.05s"></div>
-                <div class="wave-bar" style="height:30px;animation-delay:0.15s"></div>
-                <div class="wave-bar" style="height:22px;animation-delay:0.3s"></div>
-                <div class="wave-bar" style="height:40px;animation-delay:0.08s"></div>
-                <div class="wave-bar" style="height:20px;animation-delay:0.25s"></div>
-              </div>
-            </div>
-          </div>
-          <div class="mini-card">
-            <div class="mini-icon">
-              <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
-            </div>
-            <div>
-              <div class="mc-title">EMAK Silver Member</div>
-              <div class="mc-sub">MSK Gold Corporate · KIM Affiliate</div>
             </div>
           </div>
         </div>
@@ -357,6 +316,7 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
