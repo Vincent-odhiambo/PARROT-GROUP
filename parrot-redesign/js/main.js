@@ -481,24 +481,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalClose2 = document.getElementById('fg-modal-close');
     let lastFocused2 = null;
 
-    // ---- Layout: radius scales with viewport, matches CSS breakpoints ----
-    function getRadius() {
-      const w = window.innerWidth;
-      if (w <= 560) return 108;
-      if (w <= 900) return 132;
-      return 200;
-    }
-    // Drag sensitivity (deg rotated per px dragged) — a touch looser on small radii.
+    // ---- Layout: item size + ring radius derived from the stage's real measured box,
+    //      so spacing self-corrects for ANY viewport shape (not just preset width breakpoints).
+    //      This is what keeps landscape/short viewports from clipping or overlapping.
+    const ASPECT = 300 / 220; // reference item h/w ratio (matches the CSS default card shape)
+    const SPACING_FACTOR = 1.05; // >1 = a touch of breathing room past exact edge-to-edge
+
     function getSensitivity() { return 0.32; }
 
     const count = items.length;
     const anglePerItem = 360 / count;
     const baseAngles = items.map((_, i) => i * anglePerItem);
 
+    function computeItemMetrics() {
+      const rect = stage.getBoundingClientRect();
+      const stageW = rect.width || window.innerWidth;
+      const stageH = rect.height || 400;
+
+      // Start from a height that comfortably fits the stage, then derive width from the
+      // card's aspect ratio — clamped so a card never dwarfs the box in either dimension.
+      let itemH = Math.max(120, Math.min(300, stageH * 0.62));
+      let itemW = itemH / ASPECT;
+      const maxW = stageW * 0.42; // keep neighboring cards visible either side
+      if (itemW > maxW) {
+        itemW = maxW;
+        itemH = itemW * ASPECT;
+      }
+      return { itemW, itemH };
+    }
+
     function layoutItems() {
-      const radius = getRadius();
+      const { itemW, itemH } = computeItemMetrics();
+      const radius = (itemW / 2) / Math.tan(Math.PI / count) * SPACING_FACTOR;
       items.forEach((item, i) => {
-        item.style.transform = `rotateY(${baseAngles[i]}deg) translateZ(${radius}px)`;
+        item.style.width = itemW.toFixed(1) + 'px';
+        item.style.height = itemH.toFixed(1) + 'px';
+        item.style.marginLeft = (-itemW / 2).toFixed(1) + 'px';
+        item.style.marginTop = (-itemH / 2).toFixed(1) + 'px';
+        item.style.transform = `rotateY(${baseAngles[i]}deg) translateZ(${radius.toFixed(1)}px)`;
       });
     }
     layoutItems();
@@ -554,12 +574,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(tick);
 
-    // ---- Resize: relayout static per-item radius ----
+    // ---- Resize: relayout item size/spacing whenever the stage's box actually changes ----
     let resizeT = null;
-    window.addEventListener('resize', () => {
+    function scheduleRelayout(delay) {
       clearTimeout(resizeT);
-      resizeT = setTimeout(layoutItems, 150);
-    });
+      resizeT = setTimeout(layoutItems, delay);
+    }
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => scheduleRelayout(80));
+      ro.observe(stage);
+    } else {
+      window.addEventListener('resize', () => scheduleRelayout(150));
+    }
+    window.addEventListener('orientationchange', () => scheduleRelayout(300));
 
     // ---- Pointer: hold-and-drag to spin, quick tap to open ----
     stage.addEventListener('pointerenter', () => { isHovering = true; });
@@ -1175,6 +1202,11 @@ class ParticleHero {
     this._onEnterForm = () => this.form();
 
     window.addEventListener("resize", this._onResize);
+    window.addEventListener("orientationchange", () => {
+      // iOS Safari can report stale layout dimensions right at the orientation
+      // event; giving it a beat lets the resize read the settled viewport.
+      setTimeout(this._onResize, 250);
+    });
     this.container.addEventListener("pointermove", this._onPointerMove);
     this.container.addEventListener("pointerleave", this._onPointerLeave);
     this.container.addEventListener("mouseleave", this._onPointerLeave);
