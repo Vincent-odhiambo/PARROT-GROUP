@@ -360,6 +360,366 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
+  // ---- Homepage: services photo gallery (Motion.js powered) ----
+  const svcCards        = document.querySelectorAll('.svc-photo-card');
+  const svcModalOverlay = document.getElementById('svc-modal-overlay');
+
+  if (svcCards.length && svcModalOverlay) {
+    const M = window.Motion || null;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const svcModalBox   = document.getElementById('svc-modal-box');
+    const svcModalImg   = document.getElementById('svc-modal-img');
+    const svcModalIcon  = document.getElementById('svc-modal-icon');
+    const svcModalTitle = document.getElementById('svc-modal-title');
+    const svcModalDesc  = document.getElementById('svc-modal-desc');
+    const svcModalLink  = document.getElementById('svc-modal-link');
+    const svcModalClose = document.getElementById('svc-modal-close');
+    let lastFocused = null;
+
+    // ---- Scroll-triggered stagger entrance ----
+    function revealCards() {
+      if (M && !reduceMotion) {
+        M.animate(
+          Array.from(svcCards),
+          { opacity: [0, 1], y: [30, 0], scale: [0.96, 1] },
+          { duration: 0.6, delay: M.stagger(0.09), easing: [0.16, 1, 0.3, 1] }
+        );
+      } else {
+        svcCards.forEach(c => { c.style.opacity = '1'; });
+      }
+    }
+    if (M && M.inView && !reduceMotion) {
+      M.inView('.svc-photo-grid', revealCards, { amount: 0.15 });
+    } else {
+      revealCards();
+    }
+
+    // ---- Hover / focus micro-interaction ----
+    svcCards.forEach(card => {
+      const img = card.querySelector('img');
+      if (M && !reduceMotion) {
+        const grow   = () => { M.animate(card, { y: -6 }, { duration: 0.35, easing: [0.16, 1, 0.3, 1] }); M.animate(img, { scale: 1.08 }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] }); };
+        const settle = () => { M.animate(card, { y: 0 },  { duration: 0.35, easing: [0.16, 1, 0.3, 1] }); M.animate(img, { scale: 1 },    { duration: 0.5, easing: [0.16, 1, 0.3, 1] }); };
+        card.addEventListener('mouseenter', grow);
+        card.addEventListener('mouseleave', settle);
+        card.addEventListener('focus', grow);
+        card.addEventListener('blur', settle);
+      }
+    });
+
+    // ---- Modal open/close ----
+    function openSvcModal(card) {
+      lastFocused = document.activeElement;
+      svcModalImg.src           = card.dataset.img;
+      svcModalImg.alt           = card.dataset.title || '';
+      svcModalIcon.innerHTML    = `<i data-lucide="${card.dataset.icon}" style="width:22px;height:22px;"></i>`;
+      svcModalTitle.textContent = card.dataset.title || '';
+      svcModalDesc.textContent  = card.dataset.desc || '';
+      svcModalLink.textContent  = card.dataset.linkLabel || 'Learn More';
+      svcModalLink.href         = card.dataset.href || '#';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      svcModalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      if (M && !reduceMotion) {
+        M.animate(svcModalOverlay, { opacity: [0, 1] }, { duration: 0.2, easing: 'ease-out' });
+        M.animate(svcModalBox, { opacity: [0, 1], scale: [0.92, 1], y: [18, 0] }, { duration: 0.42, easing: [0.16, 1, 0.3, 1] });
+      }
+      if (svcModalClose) svcModalClose.focus();
+    }
+
+    function closeSvcModal() {
+      const finish = () => {
+        svcModalOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+      };
+      if (M && !reduceMotion) {
+        const anim = M.animate(svcModalBox, { opacity: [1, 0], scale: [1, 0.95], y: [0, 10] }, { duration: 0.2, easing: 'ease-in' });
+        M.animate(svcModalOverlay, { opacity: [1, 0] }, { duration: 0.22, easing: 'ease-in' });
+        if (anim && anim.finished) anim.finished.then(finish); else setTimeout(finish, 200);
+      } else {
+        finish();
+      }
+    }
+
+    svcCards.forEach(card => {
+      card.addEventListener('click', () => openSvcModal(card));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openSvcModal(card); }
+      });
+    });
+
+    svcModalOverlay.addEventListener('click', e => { if (e.target === svcModalOverlay) closeSvcModal(); });
+    if (svcModalClose) svcModalClose.addEventListener('click', closeSvcModal);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && svcModalOverlay.classList.contains('open')) closeSvcModal();
+    });
+  }
+
+  // ---- Homepage: Flagship Projects circular gallery (vanilla CSS 3D + Motion.js) ----
+  (function initFlagshipGallery() {
+    const stage = document.getElementById('fg-stage');
+    const track = document.getElementById('fg-track');
+    const hint  = document.getElementById('fg-hint');
+    const modalOverlay2 = document.getElementById('fg-modal-overlay');
+    if (!stage || !track || !modalOverlay2) return;
+
+    const M = window.Motion || null;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = Array.from(track.querySelectorAll('.fg-item'));
+    if (!items.length) return;
+
+    const modalBox   = document.getElementById('fg-modal-box');
+    const modalImg   = document.getElementById('fg-modal-img');
+    const modalCat   = document.getElementById('fg-modal-category');
+    const modalTitle = document.getElementById('fg-modal-title');
+    const modalDesc  = document.getElementById('fg-modal-desc');
+    const modalLoc   = document.getElementById('fg-modal-location');
+    const modalClose2 = document.getElementById('fg-modal-close');
+    let lastFocused2 = null;
+
+    // ---- Layout: radius scales with viewport, matches CSS breakpoints ----
+    function getRadius() {
+      const w = window.innerWidth;
+      if (w <= 560) return 108;
+      if (w <= 900) return 132;
+      return 200;
+    }
+    // Drag sensitivity (deg rotated per px dragged) — a touch looser on small radii.
+    function getSensitivity() { return 0.32; }
+
+    const count = items.length;
+    const anglePerItem = 360 / count;
+    const baseAngles = items.map((_, i) => i * anglePerItem);
+
+    function layoutItems() {
+      const radius = getRadius();
+      items.forEach((item, i) => {
+        item.style.transform = `rotateY(${baseAngles[i]}deg) translateZ(${radius}px)`;
+      });
+    }
+    layoutItems();
+
+    // ---- Rotation physics state ----
+    let rotation = 0;               // current ring angle, degrees
+    let velocity = 0;                // degrees per ~16.67ms frame
+    let direction = 1;               // 1 = clockwise (default), -1 = counter-clockwise
+    const baseSpeed = 0.045;         // slow idle drift, deg/frame
+    let isDragging = false;
+    let isHovering = false;
+    let isModalOpen = false;
+    let dragPointerId = null;
+    let lastX = 0, lastTime = 0, dragDistance = 0;
+    let velocitySamples = [];
+    let activeItem = null;
+    let pointerPhase = 'idle';       // 'idle' | 'pending' (held down, deciding) | 'dragging' (spin armed)
+    let holdTimer = null;
+    const HOLD_MS = 160;             // hold the press this long to arm the spin
+    const FLICK_ARM_PX = 26;         // a fast big swipe arms the spin immediately, no need to wait out the hold
+
+    function updateVisuals() {
+      const rot = rotation;
+      items.forEach((item, i) => {
+        const relative = ((baseAngles[i] + rot) % 360 + 360) % 360;
+        const normalized = relative > 180 ? 360 - relative : relative;
+        const opacity = Math.max(0.12, 1 - (normalized / 180) * 1.05);
+        item.style.opacity = opacity.toFixed(3);
+        item.style.zIndex = Math.round((1 - normalized / 180) * 1000);
+        item.style.pointerEvents = normalized > 95 ? 'none' : 'auto';
+      });
+    }
+    updateVisuals(); // set correct opacity before first paint / reveal
+
+    let lastFrame = performance.now();
+    function tick(now) {
+      const dt = Math.min(now - lastFrame, 64); // clamp to avoid huge jumps on tab-refocus
+      lastFrame = now;
+      const frames = reduceMotion ? 0 : dt / 16.67;
+
+      if (!isDragging && frames > 0) {
+        // Ease speed toward the slow idle drift, but always keep the last spin direction.
+        const hoverDamp = isHovering ? 0.25 : 1;
+        const target = direction * baseSpeed * hoverDamp;
+        const ease = isModalOpen ? 0 : Math.min(1, 0.03 * frames);
+        velocity += (target - velocity) * ease;
+        rotation += velocity * frames;
+      }
+
+      track.style.transform = `rotateY(${rotation}deg)`;
+      updateVisuals();
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // ---- Resize: relayout static per-item radius ----
+    let resizeT = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(layoutItems, 150);
+    });
+
+    // ---- Pointer: hold-and-drag to spin, quick tap to open ----
+    stage.addEventListener('pointerenter', () => { isHovering = true; });
+    stage.addEventListener('pointerleave', () => { isHovering = false; });
+
+    function armDragging() {
+      if (pointerPhase === 'dragging') return;
+      pointerPhase = 'dragging';
+      isDragging = true;
+      stage.classList.add('is-dragging');
+      if (hint) hint.classList.add('is-hidden');
+      lastTime = performance.now();
+      velocitySamples = [];
+      dragDistance = 0;
+    }
+
+    stage.addEventListener('pointerdown', e => {
+      if (e.button !== undefined && e.button !== 0) return;
+      pointerPhase = 'pending';
+      isDragging = false;
+      dragDistance = 0;
+      lastX = e.clientX;
+      lastTime = performance.now();
+      velocitySamples = [];
+      dragPointerId = e.pointerId;
+      activeItem = e.target.closest ? e.target.closest('.fg-item') : null;
+      try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+
+      clearTimeout(holdTimer);
+      holdTimer = setTimeout(() => {
+        if (pointerPhase === 'pending') armDragging();
+      }, HOLD_MS);
+    });
+
+    stage.addEventListener('pointermove', e => {
+      if (pointerPhase === 'idle' || e.pointerId !== dragPointerId) return;
+      const now = performance.now();
+      const dx = e.clientX - lastX;
+
+      if (pointerPhase === 'pending') {
+        dragDistance += Math.abs(dx);
+        lastX = e.clientX;
+        // A fast, decisive swipe shouldn't have to wait out the hold timer.
+        if (dragDistance > FLICK_ARM_PX) armDragging();
+        return;
+      }
+
+      // pointerPhase === 'dragging'
+      const dt = Math.max(now - lastTime, 1);
+      const sens = getSensitivity();
+      const deltaDeg = dx * sens;
+
+      rotation += deltaDeg;
+
+      const instVel = (deltaDeg / dt) * 16.67; // normalize to deg/frame
+      velocitySamples.push(instVel);
+      if (velocitySamples.length > 6) velocitySamples.shift();
+
+      lastX = e.clientX;
+      lastTime = now;
+    });
+
+    function endDrag(e) {
+      clearTimeout(holdTimer);
+      if (pointerPhase === 'idle') return;
+
+      const wasDragging = pointerPhase === 'dragging';
+      pointerPhase = 'idle';
+      isDragging = false;
+      stage.classList.remove('is-dragging');
+      try { if (dragPointerId !== null) stage.releasePointerCapture(dragPointerId); } catch (err) {}
+      dragPointerId = null;
+
+      if (wasDragging) {
+        if (velocitySamples.length) {
+          const avg = velocitySamples.reduce((a, b) => a + b, 0) / velocitySamples.length;
+          const maxFling = 5;
+          velocity = Math.max(-maxFling, Math.min(maxFling, avg));
+          if (Math.abs(velocity) > 0.01) direction = velocity > 0 ? 1 : -1;
+        }
+        // Real spin — suppress the click that follows so it doesn't pop open a photo.
+        stage.dataset.suppressClick = '1';
+      } else if (activeItem) {
+        // Released before the hold armed — a quick tap/click. Open the photo.
+        openFgModal(activeItem);
+        stage.dataset.suppressClick = '1';
+      }
+      activeItem = null;
+    }
+    stage.addEventListener('pointerup', endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+
+    // ---- Keyboard accessibility: arrow keys nudge the spin ----
+    stage.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { velocity = Math.min(5, velocity + 0.7); direction = 1; if (hint) hint.classList.add('is-hidden'); }
+      else if (e.key === 'ArrowLeft') { velocity = Math.max(-5, velocity - 0.7); direction = -1; if (hint) hint.classList.add('is-hidden'); }
+    });
+
+    // ---- Entrance reveal ----
+    function revealGallery() {
+      if (M && !reduceMotion) {
+        M.animate(stage, { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, easing: [0.16, 1, 0.3, 1] });
+      } else {
+        stage.style.opacity = '1';
+      }
+    }
+    if (M && M.inView && !reduceMotion) {
+      M.inView('.fg-wrap', revealGallery, { amount: 0.2 });
+    } else {
+      revealGallery();
+    }
+
+    // ---- Detail modal (photo only in the ring; full project info on click) ----
+    function openFgModal(item) {
+      if (stage.dataset.suppressClick === '1') { stage.dataset.suppressClick = ''; return; }
+      lastFocused2 = document.activeElement;
+      modalImg.src           = item.dataset.img || '';
+      modalImg.alt           = item.dataset.title || '';
+      modalCat.textContent   = item.dataset.category || '';
+      modalTitle.textContent = item.dataset.title || '';
+      modalDesc.textContent  = item.dataset.desc || '';
+      modalLoc.textContent   = item.dataset.location || '';
+
+      isModalOpen = true;
+      modalOverlay2.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      if (M && !reduceMotion) {
+        M.animate(modalOverlay2, { opacity: [0, 1] }, { duration: 0.2, easing: 'ease-out' });
+        M.animate(modalBox, { opacity: [0, 1], scale: [0.92, 1], y: [18, 0] }, { duration: 0.42, easing: [0.16, 1, 0.3, 1] });
+      }
+      if (modalClose2) modalClose2.focus();
+    }
+
+    function closeFgModal() {
+      const finish = () => {
+        modalOverlay2.classList.remove('open');
+        document.body.style.overflow = '';
+        isModalOpen = false;
+        if (lastFocused2) lastFocused2.focus();
+      };
+      if (M && !reduceMotion) {
+        const anim = M.animate(modalBox, { opacity: [1, 0], scale: [1, 0.95], y: [0, 10] }, { duration: 0.2, easing: 'ease-in' });
+        M.animate(modalOverlay2, { opacity: [1, 0] }, { duration: 0.22, easing: 'ease-in' });
+        if (anim && anim.finished) anim.finished.then(finish); else setTimeout(finish, 200);
+      } else {
+        finish();
+      }
+    }
+
+    items.forEach(item => {
+      item.addEventListener('click', () => openFgModal(item));
+    });
+    modalOverlay2.addEventListener('click', e => { if (e.target === modalOverlay2) closeFgModal(); });
+    if (modalClose2) modalClose2.addEventListener('click', closeFgModal);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modalOverlay2.classList.contains('open')) closeFgModal();
+    });
+  })();
+
   // ---- Estimator page ----
   const guestsSlider   = document.getElementById('guests-slider');
   const durationSlider = document.getElementById('duration-slider');
