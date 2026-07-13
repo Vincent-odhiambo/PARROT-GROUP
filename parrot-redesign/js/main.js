@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Start from a height that comfortably fits the stage, then derive width from the
       // card's aspect ratio — clamped so a card never dwarfs the box in either dimension.
-      let itemH = Math.max(120, Math.min(300, stageH * 0.62));
+      let itemH = Math.max(140, Math.min(360, stageH * 0.88));
       let itemW = itemH / ASPECT;
       const maxW = stageW * 0.42; // keep neighboring cards visible either side
       if (itemW > maxW) {
@@ -1336,4 +1336,41 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", bootParticleHero);
 } else {
   bootParticleHero();
+}
+
+// ---- Hero stats count-up animation ----
+// Runs once on page load/refresh, counting each stat from 0 up to its
+// target value (e.g. 0 -> 500+, 0 -> 98%, 0 -> 12yr).
+function animateHeroStats() {
+  var statEls = document.querySelectorAll(".hero-stat-num[data-count-to]");
+  if (!statEls.length) return;
+
+  var duration = 1400; // ms
+  var easeOutQuad = function (t) { return 1 - (1 - t) * (1 - t); };
+
+  statEls.forEach(function (el) {
+    var target = parseFloat(el.getAttribute("data-count-to")) || 0;
+    var suffix = el.getAttribute("data-suffix") || "";
+    var start = null;
+
+    function step(timestamp) {
+      if (start === null) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = easeOutQuad(progress);
+      var current = Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", animateHeroStats);
+} else {
+  animateHeroStats();
 }

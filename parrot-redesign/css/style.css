@@ -369,6 +369,127 @@ h1, h2, h3, h4, h5 {
 .btn-lg  { padding: 14px 32px !important; font-size: 16px !important; }
 .btn-block { width: 100%; justify-content: center; }
 
+/* ---- Watery, bubbly button look ---- */
+.btn-water {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 999px;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(2px) saturate(150%);
+  -webkit-backdrop-filter: blur(2px) saturate(150%);
+}
+/* golden water */
+.btn-gold.btn-water {
+  color: var(--ivory);
+  background-image:
+    radial-gradient(6px 6px at 24% 64%, rgba(255,255,255,0.9), rgba(255,255,255,0) 72%),
+    radial-gradient(4px 4px at 35% 40%, rgba(255,255,255,0.75), rgba(255,255,255,0) 72%),
+    radial-gradient(8px 8px at 80% 55%, rgba(255,255,255,0.55), rgba(255,255,255,0) 75%),
+    radial-gradient(3px 3px at 62% 72%, rgba(255,255,255,0.7), rgba(255,255,255,0) 72%),
+    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 42%),
+    linear-gradient(150deg, rgba(240,208,132,0.38) 0%, rgba(201,168,76,0.34) 55%, rgba(154,122,48,0.32) 100%);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255,255,255,0.8),
+    inset 0 -10px 16px -6px rgba(110,80,20,0.4),
+    0 10px 22px rgba(0,0,0,0.32);
+}
+.btn-gold.btn-water:hover {
+  box-shadow:
+    inset 0 1.5px 1px rgba(255,255,255,0.9),
+    inset 0 -10px 16px -6px rgba(110,80,20,0.45),
+    0 12px 26px rgba(0,0,0,0.36);
+}
+/* clear water */
+.btn-outline.btn-water {
+  background-image:
+    radial-gradient(6px 6px at 22% 62%, rgba(255,255,255,0.9), rgba(255,255,255,0) 72%),
+    radial-gradient(4px 4px at 33% 38%, rgba(255,255,255,0.75), rgba(255,255,255,0) 72%),
+    radial-gradient(9px 9px at 78% 52%, rgba(255,255,255,0.55), rgba(255,255,255,0) 75%),
+    radial-gradient(3px 3px at 60% 74%, rgba(255,255,255,0.7), rgba(255,255,255,0) 72%),
+    linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 42%),
+    linear-gradient(160deg, rgba(90,180,225,0.28) 0%, rgba(45,130,190,0.28) 55%, rgba(20,90,150,0.28) 100%);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255,255,255,0.65),
+    inset 0 -10px 16px -6px rgba(10,70,120,0.45),
+    0 10px 20px rgba(0,0,20,0.35);
+}
+.btn-outline.btn-water:hover {
+  box-shadow:
+    inset 0 1.5px 1px rgba(255,255,255,0.75),
+    inset 0 -10px 16px -6px rgba(10,70,120,0.5),
+    0 12px 24px rgba(0,0,20,0.4);
+}
+/* nav "Get Free Quote" + "Menu" pill — same golden-water treatment */
+.menu-pill.btn-water {
+  color: var(--ivory);
+  background-image:
+    radial-gradient(5px 5px at 26% 60%, rgba(255,255,255,0.9), rgba(255,255,255,0) 72%),
+    radial-gradient(3px 3px at 68% 35%, rgba(255,255,255,0.75), rgba(255,255,255,0) 72%),
+    radial-gradient(6px 6px at 82% 62%, rgba(255,255,255,0.5), rgba(255,255,255,0) 75%),
+    linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 42%),
+    linear-gradient(150deg, rgba(240,208,132,0.22) 0%, rgba(201,168,76,0.2) 55%, rgba(154,122,48,0.18) 100%);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255,255,255,0.7),
+    inset 0 -10px 16px -6px rgba(110,80,20,0.3),
+    0 10px 22px rgba(0,0,0,0.28);
+}
+.menu-pill.btn-water:hover {
+  background-image:
+    radial-gradient(5px 5px at 26% 60%, rgba(255,255,255,0.95), rgba(255,255,255,0) 72%),
+    radial-gradient(3px 3px at 68% 35%, rgba(255,255,255,0.8), rgba(255,255,255,0) 72%),
+    radial-gradient(6px 6px at 82% 62%, rgba(255,255,255,0.55), rgba(255,255,255,0) 75%),
+    linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 42%),
+    linear-gradient(150deg, rgba(240,208,132,0.28) 0%, rgba(201,168,76,0.25) 55%, rgba(154,122,48,0.22) 100%);
+}
+.menu-pill.btn-water.is-open {
+  background-image:
+    radial-gradient(5px 5px at 26% 60%, rgba(255,255,255,0.85), rgba(255,255,255,0) 72%),
+    radial-gradient(3px 3px at 68% 35%, rgba(255,255,255,0.7), rgba(255,255,255,0) 72%),
+    radial-gradient(6px 6px at 82% 62%, rgba(255,255,255,0.45), rgba(255,255,255,0) 75%),
+    linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 42%),
+    linear-gradient(150deg, rgba(154,122,48,0.26) 0%, rgba(110,86,32,0.24) 100%);
+  color: var(--ivory);
+}
+/* bright cross-flare highlight near the top, like light hitting the surface of water */
+.btn-water::before {
+  content: '';
+  position: absolute;
+  top: -25%; left: 12%;
+  width: 76%; height: 65%;
+  background: radial-gradient(60% 100% at 50% 15%, rgba(255,255,255,0.95), rgba(255,255,255,0.3) 45%, rgba(255,255,255,0) 72%);
+  filter: blur(1.5px);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+  animation: droplet-breathe 4s ease-in-out infinite;
+}
+/* thin glint that sweeps across the surface every few seconds, like light catching a ripple */
+.btn-water::after {
+  content: '';
+  position: absolute;
+  top: -30%; left: -35%;
+  width: 26%; height: 160%;
+  background: linear-gradient(75deg, transparent 25%, rgba(255,255,255,0.5) 46%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.5) 54%, transparent 75%);
+  filter: blur(1px);
+  transform: translateX(-40%) skewX(-14deg);
+  pointer-events: none;
+  z-index: 0;
+  animation: droplet-sheen 5s ease-in-out infinite;
+}
+.btn-water > * { position: relative; z-index: 1; }
+
+@keyframes droplet-breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%      { opacity: 0.9; transform: scale(1.04); }
+}
+@keyframes droplet-sheen {
+  0%, 48%  { transform: translateX(-40%) skewX(-14deg); opacity: 0; }
+  58%      { opacity: 0.9; }
+  70%, 100%{ transform: translateX(480%) skewX(-14deg); opacity: 0; }
+}
+
 /* ============================================================
    PAGE HERO (inner pages)
    ============================================================ */
@@ -1063,7 +1184,7 @@ input[type="range"]::-moz-range-thumb {
 .fg-stage {
   position: relative;
   width: 100%;
-  height: 460px;
+  height: clamp(300px, 60vh, 460px);
   perspective: 1600px;
   display: flex;
   align-items: center;
@@ -1166,12 +1287,10 @@ input[type="range"]::-moz-range-thumb {
 .fg-hint i { color: var(--gold); }
 
 @media (max-width: 900px) {
-  .fg-stage { height: 380px; perspective: 1100px; }
-  .fg-item { width: 168px; height: 228px; margin: -114px 0 0 -84px; }
+  .fg-stage { perspective: 1100px; }
 }
 @media (max-width: 560px) {
-  .fg-stage { height: 320px; perspective: 900px; }
-  .fg-item { width: 138px; height: 188px; margin: -94px 0 0 -69px; }
+  .fg-stage { perspective: 900px; }
 }
 
 /* ---- Flagship project detail modal ---- */
@@ -1235,7 +1354,8 @@ input[type="range"]::-moz-range-thumb {
   pointer-events: auto;
 }
 .hero-eyebrow {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 8px;
   font-size: 11px;
@@ -1246,7 +1366,7 @@ input[type="range"]::-moz-range-thumb {
   border: 1px solid var(--border-gold);
   padding: 6px 14px;
   border-radius: 100px;
-  margin-bottom: 28px;
+  margin: 0 auto 28px;
 }
 .hero-title {
   font-size: clamp(42px, 5vw, 66px);
@@ -1255,21 +1375,33 @@ input[type="range"]::-moz-range-thumb {
   letter-spacing: -1.5px;
   color: var(--ivory);
   margin-bottom: 24px;
+  text-align: center;
+}
+.hero-desc-columns {
+  column-count: 2;
+  column-gap: 60px;
+  column-fill: balance;
+  max-width: 1080px;
+  margin-left: -30px;
+  margin-bottom: 40px;
 }
 .hero-desc {
   font-size: 17px;
   color: var(--text-muted);
-  max-width: 480px;
-  margin-bottom: 40px;
+  max-width: none;
+  margin-bottom: 16px;
   line-height: 1.75;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
 }
-.hero-cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.hero-desc:last-child { margin-bottom: 0; }
+.hero-cta-row { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .hero-stats {
   display: flex;
   gap: 40px;
+  justify-content: center;
   margin-top: 52px;
   padding-top: 36px;
-  border-top: 1px solid var(--border);
 }
 .hero-stat-num {
   display: block;
@@ -1657,6 +1789,7 @@ input[type="range"]::-moz-range-thumb {
 }
 @media (max-width: 720px) {
   .services-grid{ grid-template-columns: 1fr; }
+  .hero-desc-columns { column-count: 1; margin-left: 0; column-gap: 18px; }
   .hero-stats   { flex-direction: column; gap: 20px; }
   .cta-inner    { flex-direction: column; align-items: flex-start; }
   .overlay-links { width: 100%; padding: 0 28px; align-items: flex-end; }
@@ -1680,12 +1813,11 @@ input[type="range"]::-moz-range-thumb {
   .hero-title    { margin-bottom: 14px; font-size: clamp(32px, 5vw, 48px); }
   .hero-desc     { margin-bottom: 22px; }
   .hero-stats    { margin-top: 24px; padding-top: 18px; gap: 28px; }
-  .fg-stage      { height: 280px; }
+  .fg-stage      { height: clamp(200px, 55vh, 320px); }
   .nav-container { height: 56px; }
 }
 
 /* ---- iPad / tablet portrait fine-tuning ---- */
 @media (min-width: 561px) and (max-width: 1024px) and (orientation: portrait) {
   .hero-title { font-size: clamp(38px, 6vw, 56px); }
-  .fg-stage   { height: 400px; }
 }
