@@ -1,6 +1,6 @@
 /* ============================================================
-   PARROT GROUP — Global Stylesheet
-   Palette: Obsidian Black · Burnished Gold · Ivory
+  PARROT GROUP — Global Stylesheet
+  Palette: Obsidian Black · Burnished Gold · Ivory
    ============================================================ */
 
 :root {
@@ -17,8 +17,8 @@
   --text-body:    #C8C4BC;
   --border:       rgba(201,168,76,0.15);
   --border-gold:  rgba(201,168,76,0.40);
-  --ff-display:   'Outfit', sans-serif;
-  --ff-body:      'Inter', sans-serif;
+  --ff-display:   'Bodoni Moda', serif;
+  --ff-body:      'Nunito Sans', sans-serif;
   --radius-sm:    8px;
   --radius-md:    12px;
   --radius-lg:    16px;
@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5 {
 }
 
 /* ============================================================
-   HEADER & NAV
+HEADER & NAV
    ============================================================ */
 .main-header {
   position: fixed;
@@ -88,7 +88,6 @@ h1, h2, h3, h4, h5 {
   background: rgba(10,10,10,0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
   transition: box-shadow var(--transition);
 }
 .main-header.scrolled {
@@ -99,10 +98,11 @@ h1, h2, h3, h4, h5 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
-  height: 72px;
+  height: 150px;
   display: flex;
   align-items: center;
   gap: 24px;
+  position: relative;
 }
 
 .logo {
@@ -111,27 +111,27 @@ h1, h2, h3, h4, h5 {
   gap: 10px;
   flex-shrink: 0;
 }
+.logo-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .logo-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 8px;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1/1
+  boarder radius:100px;
   overflow: hidden;
   flex-shrink: 0;
+  background :transparent;
 }
 .logo-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.logo-text {
-  font-family: var(--ff-display);
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -0.3px;
-  white-space: nowrap;
-}
-.logo-text .gold { color: var(--gold); }
-.logo-text .white { color: var(--ivory); }
+
 
 .nav-actions { margin-left: auto; flex-shrink: 0; }
 
@@ -141,8 +141,23 @@ h1, h2, h3, h4, h5 {
   .logo-text { font-size: 15px; }
   .menu-pill { padding: 0 14px; height: 36px; font-size: 0.68rem; gap: 6px; }
 }
-@media (max-width: 400px) {
-  .nav-actions .btn-sm { padding: 8px 12px !important; font-size: 11.5px !important; }
+@media (min-width: 641px) and (max-width: 900px) {
+  .nav-container { height: 100px; }
+  .logo-icon { width: 84px; height: 84px; }
+}
+@media (max-width: 900px) {
+  .contact-grid    { grid-template-columns: 1fr; }
+  .estimator-grid  { grid-template-columns: 1fr; }
+  .invoice-panel   { position: static; }
+  .designer-grid   { grid-template-columns: 1fr; }
+  .dashboard-layout{ grid-template-columns: 1fr; }
+  .db-sidebar      { border-right: none; border-bottom: 1px solid var(--border); }
+  .db-main-grid    { grid-template-columns: 1fr; }
+  .stat-cards-row  { grid-template-columns: 1fr 1fr; }
+  .stats-row       { grid-template-columns: 1fr 1fr; }
+  .form-row-2      { grid-template-columns: 1fr; }
+  .container       { padding: 0 24px; }
+  .hero-desc-columns { margin-left: 0; }
 }
 
 /* ── MENU PILL BUTTON ── */
@@ -1395,6 +1410,15 @@ input[type="range"]::-moz-range-thumb {
   -webkit-column-break-inside: avoid;
 }
 .hero-desc:last-child { margin-bottom: 0; }
+.hero-desc::first-letter {
+  font-family: var(--ff-display);
+  font-size: 3.6em;
+  font-weight: 700;
+  line-height: 0.75;
+  float: left;
+  padding: 6px 10px 0 0;
+  color: var(--gold);
+}
 .hero-cta-row { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .hero-stats {
   display: flex;
